@@ -2,19 +2,23 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Threading;
+using ProblematicProblem.TestClasses;
 
 namespace ProblematicProblem
 {
     public class Program
     {
         // List instantiation of activities
-        private static List<string> activities = new List<string>()
+        public static List<string> activities = new List<string>()
             { "Movies", "Paintball", "Bowling", "Laser Tag", "LAN Party", "Hiking", "Axe Throwing", "Wine Tasting" };
 
         // Main Method
         static void Main(string[] args)
         {
+            
+
             Console.WriteLine("Hello, welcome to the random activity generator!");
 
             bool generateActivityBool = false;
@@ -158,10 +162,7 @@ namespace ProblematicProblem
                                     bool keepOrRedoBool = false;
                                     do
                                     {
-
-                                        Random rng = new Random();
-                                        int randomNumber = rng.Next(activities.Count);
-                                        string randomActivity = activities[randomNumber];
+                                        RandomGenerator.RandomNumber();
 
                                         // If user is UNDER 21
                                         if (userAge < 21 && randomActivity == "Wine Tasting")
