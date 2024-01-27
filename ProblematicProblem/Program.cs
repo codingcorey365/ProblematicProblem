@@ -1,10 +1,8 @@
+using ProblematicProblem.TestClasses;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Threading;
-using ProblematicProblem.TestClasses;
 
 namespace ProblematicProblem
 {
@@ -160,25 +158,28 @@ namespace ProblematicProblem
 
                                     // Random activity generator-----------------------------------------------------------------------------
                                     bool keepOrRedoBool = false;
-                                    do
+                                    do 
                                     {
-                                        RandomGenerator.RandomNumber();
+                                        var test = RandomGenerator.RandomNumber(activities);
 
                                         // If user is UNDER 21
-                                        if (userAge < 21 && randomActivity == "Wine Tasting")
+                                        if (userAge < 21 && test == "Wine Tasting")
                                         {
                                             Console.WriteLine(
-                                                $"\nOh no! Looks like you are too young to do {randomActivity}");
+                                                $"\nOh no! Looks like you are too young to do {test}");
                                             Console.WriteLine("\nI'll pick something else!");
-                                            activities.Remove(randomActivity);
+                                            activities.Remove(test);
 
                                             // Keep or Redo if user is UNDER 21
                                             bool keepOrRedoUnder21Bool = false;
                                             do
                                             {
                                                 // New random after item removed from list.
-                                                int randomNumberUnder21 = rng.Next(activities.Count);
-                                                string randomActivityUnder21 = activities[randomNumberUnder21];
+
+
+                                                //int randomNumberUnder21 = activities.Count;
+                                                //string randomActivityUnder21 = activities[randomNumberUnder21];
+                                                string randomActivityUnder21 = RandomGenerator.RandomNumber(activities);
 
                                                 // Keep activity UNDER 21?
                                                 Console.Write(
@@ -217,14 +218,14 @@ namespace ProblematicProblem
                                             {
                                                 // Keep activity OVER 21?
                                                 Console.Write(
-                                                    $"\nOkay got it! {userName}, your random activity is: {randomActivity}! Do you want to play this activity? Enter Yes or No.");
+                                                    $"\nOkay got it! {userName}, your random activity is: {test}! Do you want to play this activity? Enter Yes or No.");
                                                 var keepOrRedo = Console.ReadLine().Trim().ToLower();
 
                                                 // Keep activity is YES to OVER 21
                                                 if (keepOrRedo == "yes" || keepOrRedo == "y")
                                                 {
                                                     Console.WriteLine(
-                                                        $"\nAwesome {userName}, you are now playing {randomActivity}!");
+                                                        $"\nAwesome {userName}, you are now playing {test}!");
                                                     keepOrRedoBool = true;
                                                     return;
                                                 }

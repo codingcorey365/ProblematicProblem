@@ -8,8 +8,10 @@ using System.Threading;
 namespace ProblematicProblem.TestClasses;
 public class RandomGenerator
 {
-    public string RandomNumber(List<string> activity)
+
+    public static string RandomNumber(List<string> activity)
     {
+
         Random rng = new Random();
         int randomNumber = rng.Next(activity.Count);
         string randomActivity = activity[randomNumber];
