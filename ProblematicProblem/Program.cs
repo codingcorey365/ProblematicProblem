@@ -1,8 +1,10 @@
-using ProblematicProblem.TestClasses;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Threading;
+using ProblematicProblem.TestClasses;
 
 namespace ProblematicProblem
 {
@@ -15,13 +17,7 @@ namespace ProblematicProblem
         // Main Method
         static void Main(string[] args)
         {
-            Refactor r = new Refactor();
-            r.GetActivity();
-        }
-
-        static void GetActivity()
-        {
-
+            
 
             Console.WriteLine("Hello, welcome to the random activity generator!");
 
@@ -164,28 +160,25 @@ namespace ProblematicProblem
 
                                     // Random activity generator-----------------------------------------------------------------------------
                                     bool keepOrRedoBool = false;
-                                    do 
+                                    do
                                     {
-                                        var test = RandomGenerator.RandomNumber(activities);
+                                        RandomGenerator.RandomNumber();
 
                                         // If user is UNDER 21
-                                        if (userAge < 21 && test == "Wine Tasting")
+                                        if (userAge < 21 && randomActivity == "Wine Tasting")
                                         {
                                             Console.WriteLine(
-                                                $"\nOh no! Looks like you are too young to do {test}");
+                                                $"\nOh no! Looks like you are too young to do {randomActivity}");
                                             Console.WriteLine("\nI'll pick something else!");
-                                            activities.Remove(test);
+                                            activities.Remove(randomActivity);
 
                                             // Keep or Redo if user is UNDER 21
                                             bool keepOrRedoUnder21Bool = false;
                                             do
                                             {
                                                 // New random after item removed from list.
-
-
-                                                //int randomNumberUnder21 = activities.Count;
-                                                //string randomActivityUnder21 = activities[randomNumberUnder21];
-                                                string randomActivityUnder21 = RandomGenerator.RandomNumber(activities);
+                                                int randomNumberUnder21 = rng.Next(activities.Count);
+                                                string randomActivityUnder21 = activities[randomNumberUnder21];
 
                                                 // Keep activity UNDER 21?
                                                 Console.Write(
@@ -224,14 +217,14 @@ namespace ProblematicProblem
                                             {
                                                 // Keep activity OVER 21?
                                                 Console.Write(
-                                                    $"\nOkay got it! {userName}, your random activity is: {test}! Do you want to play this activity? Enter Yes or No.");
+                                                    $"\nOkay got it! {userName}, your random activity is: {randomActivity}! Do you want to play this activity? Enter Yes or No.");
                                                 var keepOrRedo = Console.ReadLine().Trim().ToLower();
 
                                                 // Keep activity is YES to OVER 21
                                                 if (keepOrRedo == "yes" || keepOrRedo == "y")
                                                 {
                                                     Console.WriteLine(
-                                                        $"\nAwesome {userName}, you are now playing {test}!");
+                                                        $"\nAwesome {userName}, you are now playing {randomActivity}!");
                                                     keepOrRedoBool = true;
                                                     return;
                                                 }
