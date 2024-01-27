@@ -15,7 +15,13 @@ namespace ProblematicProblem
         // Main Method
         static void Main(string[] args)
         {
-            
+            Refactor r = new Refactor();
+            r.GetActivity();
+        }
+
+        static void GetActivity()
+        {
+
 
             Console.WriteLine("Hello, welcome to the random activity generator!");
 
