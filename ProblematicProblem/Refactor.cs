@@ -44,8 +44,7 @@ namespace ProblematicProblem
                     }
 
 
-                    if (user.AskYNQuestion(
-                            "\nWould you like to see the current list of activityList? Enter Yes or No.\n"))
+                    if (user.AskYNQuestion("\nWould you like to see the current list of activityList? Enter Yes or No.\n"))
                     {
                         Console.WriteLine("\nSure thing, Here is the current list of activityList!\n");
 
@@ -59,8 +58,7 @@ namespace ProblematicProblem
                         bool addActivity;
                         do
                         {
-                            addActivity = user.AskYNQuestion(
-                                "\nWould you like to add another activity before we generate one? yes/no:\n");
+                            addActivity = user.AskYNQuestion("\nWould you like to add another activity before we generate one? yes/no:\n");
                             if (addActivity)
                             {
                                 // Get name of activity to add to the list
@@ -78,8 +76,6 @@ namespace ProblematicProblem
                                 }
                             }
                         } while (addActivity);
-
-
                     }
 
                     Console.WriteLine("\nNo problem. Lets get started.");
@@ -93,8 +89,7 @@ namespace ProblematicProblem
                         // If user is UNDER 21
                         if (userAge < 21 && test == "Wine Tasting")
                         {
-                            Console.WriteLine(
-                                $"\nOh no! Looks like you are too young to do {test}");
+                            Console.WriteLine($"\nOh no! Looks like you are too young to do {test}");
                             Console.WriteLine("\nI'll pick something else!");
                             activityList.Remove(test);
 
@@ -112,15 +107,13 @@ namespace ProblematicProblem
 
                                 if (user.AskYNQuestion($"\nAh got it! {userName}, your random activity is: {randomActivityUnder21}! Do you want to play this activity? Enter Yes or No."))
                                 {
-                                    Console.WriteLine(
-                                        $"\nAwesome {userName}, you are now playing {randomActivityUnder21}!");
+                                    Console.WriteLine($"\nAwesome {userName}, you are now playing {randomActivityUnder21}!");
                                     keepOrRedoUnder21Bool = true;
                                     return;
                                 }
                                 else
                                 {
-                                    Console.WriteLine(
-                                        $"\nOkay {userName}, Lets pick a new random activity!");
+                                    Console.WriteLine($"\nOkay {userName}, Lets pick a new random activity!");
 
                                 }
 
@@ -135,8 +128,7 @@ namespace ProblematicProblem
 
                                 if (user.AskYNQuestion($"\nOkay got it! {userName}, your random activity is: {test}! Do you want to play this activity? Enter Yes or No."))
                                 {
-                                    Console.WriteLine(
-                                        $"\nAwesome {userName}, you are now playing {test}!");
+                                    Console.WriteLine($"\nAwesome {userName}, you are now playing {test}!");
                                     keepOrRedoBool = true;
                                     return;
                                 }
